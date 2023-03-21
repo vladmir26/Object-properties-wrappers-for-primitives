@@ -10,6 +10,8 @@
         "error",
         "LabeledStatement",
         "WithStatement"
-      ]
+      ],
+      "linebreak-style":"off",
+      "consistent-return": "off"
     }
   }
