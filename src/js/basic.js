@@ -1,4 +1,4 @@
-export default function heroLife(obj) {
+export function heroLife(obj) {
   if (obj.health > 50) {
     return 'healthy';
   }
@@ -11,11 +11,20 @@ export default function heroLife(obj) {
 }
 heroLife({ name: 'Маг', health: 90 });
 
-function heroLifeLevel(arr) {
+const heroes = [
+  {name: 'мечник', health: 10},
+  {name: 'маг', health: 100},
+  {name: 'лучник', health: 80},
+];
 
+
+export function heroLifeLevel(arr) {
+   arr.sort((a, b) => {
+    return b.health - a.health
+   })
+
+   return arr;
 
 }
 
-heroLifeLevel([{ name: 'мечник', health: 10 },
-  { name: 'маг', health: 100 },
-  { name: 'лучник', health: 80 }]);
+heroLifeLevel(heroes); 
