@@ -1,30 +1,27 @@
-export function heroLife(obj) {
-  if (obj.health > 50) {
-    return 'healthy';
-  }
-  if (obj.health <= 50 && obj.health >= 15) {
-    return 'wounded';
-  }
-  if (obj.health < 15) {
-    return 'critical';
-  }
-}
-heroLife({ name: 'Маг', health: 90 });
+const obj = {name: 'мечник', health: 10, level: 2, attack: 80, defence: 40}
 
-const heroes = [
-  {name: 'мечник', health: 10},
-  {name: 'маг', health: 100},
-  {name: 'лучник', health: 80},
-];
+function orderByProps(obj, ordArray) {
+  const result = [];
 
+   if (ordArray.length) {
+    for (prop in ordArray) {
+      result.push({key: prop, value: obj[prop]})
+    }
 
-export function heroLifeLevel(arr) {
-   arr.sort((a, b) => {
-    return b.health - a.health
-   })
+    let rest = Object.keys(ordArray).filter((prop) => !ordArray.includes(prop));
 
-   return arr;
+    for (rest in ordArray) {
+      result.push({key: rest, value: obj[rest]})
+    }
 
+   } else {
+     for (prop in obj) {
+       result.push({key: prop, value: obj[prop]})
+     }
+     
+   }
+
+  return result;
 }
 
-heroLifeLevel(heroes); 
+console.log(orderByProps(obj, ["name", "level"]));
